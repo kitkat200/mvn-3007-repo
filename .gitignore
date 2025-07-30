@@ -1,0 +1,3 @@
+target/classes/*
+target/demo-1.0-SNAPSHOT.jar
+target/test-classes
