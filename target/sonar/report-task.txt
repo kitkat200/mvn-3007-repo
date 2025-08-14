@@ -1,0 +1,7 @@
+organization=newsonarbinorg
+projectKey=newsonarbinorg_dev-project
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.66213
+dashboardUrl=https://sonarcloud.io/dashboard?id=newsonarbinorg_dev-project
+ceTaskId=AZinZCWnDEti_YiLWEvP
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZinZCWnDEti_YiLWEvP
