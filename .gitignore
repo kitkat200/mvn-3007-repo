@@ -1,4 +1,8 @@
 target/classes/*
+target/generated-sources/*
+target/generated-test-sources
+target/maven-status/*
+target/maven-archiver
 target/demo-1.0-SNAPSHOT.jar
 target/test-classes
 target/sonar/*
