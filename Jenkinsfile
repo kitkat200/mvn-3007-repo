@@ -21,7 +21,7 @@ pipeline {
                 SONAR_TOKEN = credentials('sonarqube')
             }
             steps{
-                sh 'mvn clean package sonar:sonar -Dsonar.projectKey=newsonarbinorg_dev-project -Dsonar.organization=newsonarbinorg -Dsonar.projectName=dev-project -Dsonar.host.url=https://sonarcloud.io/'
+                sh 'mvn clean package sonar:sonar -Dsonar.projectKey=newsonarbinorg_dev-project -Dsonar.organization=newsonarbinorg -Dsonar.projectName=dev-project -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=$SONAR_TOKEN'
             }
         }
     }
