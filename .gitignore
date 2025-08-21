@@ -6,3 +6,4 @@ target/demo-1.0-SNAPSHOT.jar
 target/test-classes/*
 target/sonar/*
 target/surefire-reports/*
+target/classes/*
