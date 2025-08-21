@@ -18,7 +18,7 @@ pipeline {
         }
         stage('scanning code'){
             steps{
-                sh 'mvn sonar:sonar'
+                sh 'mvn clean package sonar:sonar -Dsonar.projectKey=newsonarbinorg_dev-project -Dsonar.organization=newsonarbinorg -Dsonar.projectName=dev-project -Dsonar.host.url=https://sonarcloud.io/'
             }
         }
     }
