@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            label "maven-sonar-scanner-node"
+        }
+    }
     
     tools {
         jdk "java-17"
