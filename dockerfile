@@ -3,5 +3,6 @@ LABEL maintainer="Raj"
 LABEL version="1.0"
 WORKDIR /app
 COPY target/java-docker.jar /app/java-docker.jar
+Expose 8080
 ENTRYPOINT ["java"]
 CMD ["-jar", "java-docker.jar"]
