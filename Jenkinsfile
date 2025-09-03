@@ -27,11 +27,6 @@ pipeline{
                 }
             }
         }
-        stage('container creation'){
-            steps{
-                sh "docker container run --name javaweb -dit -p 7005:80 dockluck24/java-mvn-app:v1"
-            }
-        }
     }
     post{
         always{
