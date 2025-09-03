@@ -15,14 +15,14 @@ pipeline{
         }
         stage('image build'){
             steps{
-                sh "docker image build -t dockluck24/java-mvn-app:v1 ."
+                sh "docker image build -t dockluck24/java-mvn-app:v2 ."
             }
         }
         stage('image push'){
             steps{
                 script{
                     withDockerRegistry(credentialsId: 'docker-credentials') {
-                        sh "docker image push dockluck24/java-mvn-app:v1"
+                        sh "docker image push dockluck24/java-mvn-app:v2"
                     }
                 }
             }
