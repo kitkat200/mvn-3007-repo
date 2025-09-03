@@ -5,7 +5,7 @@ pipeline{
         maven 'maven-3.9.11'
     }
     options{
-        buildDiscarder(logRotator(numToKeepStr: '3', artifactNumToKeepStr: '2'))
+        buildDiscarder(logRotator(numToKeepStr: '1', artifactNumToKeepStr: '1'))
     }
     stages{
         stage('clean installation'){
