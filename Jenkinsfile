@@ -1,24 +1,48 @@
-pipeline {
+pipeline{
     agent any
-    
-    tools {
-        jdk "java-17"
-        maven "maven-3.9.11"
+    tools{
+        jdk 'java-17'
+        maven 'maven-3.9.11'
     }
-
-    stages {
-        stage('maven clean and build'){
+    options{
+        buildDiscarder(logRotation(numtokeepstr: '3', artifactNumtokeepstr: '2'))
+    }
+    stages{
+        stage('clean installation'){
             steps{
-                sh 'mvn clean install'
+                sh "mvn clean install"
             }
         }
-        stage('scanning code'){
-            environment {
-                SONAR_TOKEN = credentials('sonarqube')
-            }
+        stage('image build'){
             steps{
-                sh 'mvn clean package sonar:sonar -Dsonar.projectKey=newsonarbinorg_dev-project -Dsonar.organization=newsonarbinorg -Dsonar.projectName=dev-project -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=$SONAR_TOKEN'
+                sh "docker image build -t dockluck24/java-mvn-app:v1 ."
             }
+        }
+        stage('image push'){
+            steps{
+                script{
+                    withDockerRegistry(credentialsId: 'docker-credentials') {
+                        sh "docker image push dockluck24/java-mvn-app:v1"
+                    }
+                }
+            }
+        }
+        stage('container creation'){
+            steps{
+                sh "docker container run --name javaweb -dit -p 7005:80 dockluck24/java-mvn-app:v1"
+            }
+        }
+    }
+    post{
+        always{
+            echo "cleaning up old builds"
+        }
+        success{
+            echo "Build succeeded"
+        }
+        
+        failure{
+            echo "build failed"
         }
     }
 }

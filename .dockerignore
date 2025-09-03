@@ -1,0 +1,2 @@
+target/*
+!target/java-docker.jar
